@@ -51,8 +51,8 @@
   }
 }]]></component>
   <component name="RunManager">
-    <configuration name="myfirstcode" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="myfirstcode" />
+    <configuration name="dt.stqa.pft.sanbox.myfirstcode" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dt.stqa.pft.sanbox.myfirstcode" />
       <module name="sandbox.main" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -60,7 +60,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.myfirstcode" />
+        <item itemvalue="Application.dt.stqa.pft.sanbox.myfirstcode" />
       </list>
     </recent_temporary>
   </component>

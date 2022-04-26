@@ -1,3 +1,5 @@
+package dt.stqa.pft.sanbox;
+
 public class myfirstcode {
 
 
