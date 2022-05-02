@@ -8,5 +8,4 @@ public class MyFirstCode {
 
 		System.out.println("Расстояние между точками = " + p1.distance(p1, p2));
 			}
-
 }
