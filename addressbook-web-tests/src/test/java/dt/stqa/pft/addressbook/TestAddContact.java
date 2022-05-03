@@ -3,8 +3,8 @@ package dt.stqa.pft.addressbook;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
@@ -18,7 +18,7 @@ public class TestAddContact {
   private StringBuffer verificationErrors = new StringBuffer();
   private JavascriptExecutor js;
 
-  @BeforeClass(alwaysRun = true)
+  @BeforeMethod(alwaysRun = true)
   public void setUp() throws Exception {
     System.setProperty("webdriver.chrome.driver", "C:\\Users\\nstaroso\\GitHub\\java_pft\\addressbook-web-tests\\chromedriver.exe");
     driver = new ChromeDriver();
@@ -99,7 +99,7 @@ public class TestAddContact {
     driver.findElement(By.linkText("add new")).click();
   }
 
-  @AfterClass(alwaysRun = true)
+  @AfterMethod(alwaysRun = true)
   public void tearDown() throws Exception {
     driver.quit();
     String verificationErrorString = verificationErrors.toString();
