@@ -43,7 +43,7 @@ public class TestAddContact {
   public void testCreateNewContact() throws Exception {
     driver.get("http://localhost/addressbook/addressbook/");
     gotoAddNewContact();
-    fillDataOfContact();
+    fillDataOfContact(new GroupContactData("Nadezhda", "Andreevna", "Chumakova", "nstaroso", "DTIT", "Saint-Petersburg", "n.starosotnikova@gmail.com", "21", "August", "1988"));
     confirmInput();
     gotoHomePage();
     Logout();
@@ -61,38 +61,38 @@ public class TestAddContact {
     driver.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
   }
 
-  private void fillDataOfContact() {
+  private void fillDataOfContact(GroupContactData groupContactData) {
     driver.findElement(By.name("firstname")).click();
     driver.findElement(By.name("firstname")).clear();
-    driver.findElement(By.name("firstname")).sendKeys("Nadezhda");
+    driver.findElement(By.name("firstname")).sendKeys(groupContactData.getName());
     driver.findElement(By.name("middlename")).click();
     driver.findElement(By.name("middlename")).clear();
-    driver.findElement(By.name("middlename")).sendKeys("Andreevna");
+    driver.findElement(By.name("middlename")).sendKeys(groupContactData.getSecondname());
     driver.findElement(By.name("lastname")).click();
     driver.findElement(By.name("lastname")).clear();
-    driver.findElement(By.name("lastname")).sendKeys("Chumakova");
+    driver.findElement(By.name("lastname")).sendKeys(groupContactData.getLastname());
     driver.findElement(By.name("nickname")).click();
     driver.findElement(By.name("nickname")).clear();
-    driver.findElement(By.name("nickname")).sendKeys("nstaroso");
+    driver.findElement(By.name("nickname")).sendKeys(groupContactData.getNickname());
     driver.findElement(By.name("company")).click();
     driver.findElement(By.name("company")).clear();
-    driver.findElement(By.name("company")).sendKeys("DTIT");
+    driver.findElement(By.name("company")).sendKeys(groupContactData.getCompanyname());
     driver.findElement(By.name("address")).click();
     driver.findElement(By.name("address")).clear();
-    driver.findElement(By.name("address")).sendKeys("Saint-Petersburg");
+    driver.findElement(By.name("address")).sendKeys(groupContactData.getCity());
     driver.findElement(By.name("theform")).click();
     driver.findElement(By.name("email")).click();
     driver.findElement(By.name("email")).clear();
-    driver.findElement(By.name("email")).sendKeys("n.starosotnikova@gmail.com");
+    driver.findElement(By.name("email")).sendKeys(groupContactData.getEmail());
     driver.findElement(By.name("theform")).click();
     driver.findElement(By.name("bday")).click();
     driver.findElement(By.name("bday")).click();
-    new Select(driver.findElement(By.name("bday"))).selectByVisibleText("21");
+    new Select(driver.findElement(By.name("bday"))).selectByVisibleText(groupContactData.getBday());
     driver.findElement(By.name("bmonth")).click();
-    new Select(driver.findElement(By.name("bmonth"))).selectByVisibleText("August");
+    new Select(driver.findElement(By.name("bmonth"))).selectByVisibleText(groupContactData.getBmonth());
     driver.findElement(By.name("byear")).click();
     driver.findElement(By.name("byear")).clear();
-    driver.findElement(By.name("byear")).sendKeys("1988");
+    driver.findElement(By.name("byear")).sendKeys(groupContactData.getByear());
   }
 
   private void gotoAddNewContact() {
