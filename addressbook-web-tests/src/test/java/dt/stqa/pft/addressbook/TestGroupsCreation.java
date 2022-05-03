@@ -8,12 +8,9 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.fail;
 
 public class TestGroupsCreation {
-  /**
-   *
-   */
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -22,7 +19,7 @@ public class TestGroupsCreation {
 
   @BeforeClass(alwaysRun = true)
   public void setUp() throws Exception {
-    System.setProperty("webdriver.chrome.driver", "");
+    System.setProperty("webdriver.chrome.driver", "C:\\Users\\nstaroso\\GitHub\\java_pft\\addressbook-web-tests\\chromedriver.exe");
     driver = new ChromeDriver();
     baseUrl = "https://www.google.com/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -32,29 +29,26 @@ public class TestGroupsCreation {
   @Test
   public void testUntitledTestCase() throws Exception {
     driver.get("http://localhost/addressbook/addressbook/group.php");
-    driver.findElement(By.id("LoginForm")).click();
     driver.findElement(By.name("user")).click();
-    driver.findElement(By.name("user")).click();
-    //ERROR: Caught exception [ERROR: Unsupported command [doubleClick | name=user | ]]
-    driver.findElement(By.xpath("//input[@value='Login']")).click();
-    driver.findElement(By.name("new")).click();
-    driver.findElement(By.name("group_name")).click();
-    driver.findElement(By.name("group_name")).clear();
-    driver.findElement(By.name("group_name")).sendKeys("test2");
-    driver.findElement(By.name("group_header")).click();
-    driver.findElement(By.name("group_header")).clear();
-    driver.findElement(By.name("group_header")).sendKeys("test2");
-    driver.findElement(By.name("group_footer")).click();
-    driver.findElement(By.name("group_footer")).clear();
-    driver.findElement(By.name("group_footer")).sendKeys("test2");
-    driver.findElement(By.name("submit")).click();
-    driver.findElement(By.xpath("//div[@id='content']/div")).click();
-    driver.findElement(By.linkText("group page")).click();
-    driver.findElement(By.linkText("Logout")).click();
     driver.findElement(By.name("user")).clear();
     driver.findElement(By.name("user")).sendKeys("admin");
+    driver.findElement(By.name("pass")).click();
     driver.findElement(By.name("pass")).clear();
     driver.findElement(By.name("pass")).sendKeys("secret");
+    driver.findElement(By.xpath("//input[@value='Login']")).click();
+    driver.findElement(By.xpath("//div[@id='content']/form/input[4]")).click();
+    driver.findElement(By.name("group_name")).click();
+    driver.findElement(By.name("group_name")).clear();
+    driver.findElement(By.name("group_name")).sendKeys("test4");
+    driver.findElement(By.name("group_header")).click();
+    driver.findElement(By.name("group_header")).clear();
+    driver.findElement(By.name("group_header")).sendKeys("test4");
+    driver.findElement(By.name("group_footer")).click();
+    driver.findElement(By.name("group_footer")).clear();
+    driver.findElement(By.name("group_footer")).sendKeys("test4");
+    driver.findElement(By.name("submit")).click();
+    driver.findElement(By.linkText("group page")).click();
+    driver.findElement(By.linkText("Logout")).click();
   }
 
   @AfterClass(alwaysRun = true)
