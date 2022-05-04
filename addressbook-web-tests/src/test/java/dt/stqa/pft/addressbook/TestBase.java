@@ -56,12 +56,11 @@ public class TestBase {
   }
 
   protected void initGroupCreation() {
-    wd.findElement(By.name("group_name")).click();
+    wd.findElement(By.xpath("//div[@id='content']/form/input[4]")).click();
   }
 
   protected void gotoGroupPage() {
-    wd.findElement(By.xpath("//div[@id='content']/form/input[4]")).click();
-  }
+    wd.findElement(By.linkText("groups")).click();;  }
 
   @AfterMethod(alwaysRun = true)
   public void tearDown() throws Exception {
@@ -84,5 +83,13 @@ public class TestBase {
     } catch (NoAlertPresentException e) {
       return false;
     }
+  }
+
+  protected void deleteSelectedGroup() {
+    wd.findElement(By.name("delete")).click();
+  }
+
+  protected void selectGroup() {
+    wd.findElement(By.name("selected[]")).click();
   }
 }
