@@ -1,5 +1,6 @@
-package dt.stqa.pft.addressbook;
+package dt.stqa.pft.addressbook.tests;
 
+import dt.stqa.pft.addressbook.model.GroupContactData;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
