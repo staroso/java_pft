@@ -1,6 +1,6 @@
 package dt.stqa.pft.addressbook.model;
 
-public class GroupContactData {
+public class ContactData {
   private final String name;
   private final String secondname;
   private final String lastname;
@@ -8,11 +8,8 @@ public class GroupContactData {
   private final String companyname;
   private final String city;
   private final String email;
-  private final String bday;
-  private final String bmonth;
-  private final String byear;
 
-  public GroupContactData(String name, String secondname, String lastname, String nickname, String companyname, String city, String email, String bday, String bmonth, String byear) {
+  public ContactData(String name, String secondname, String lastname, String nickname, String companyname, String city, String email) {
     this.name = name;
     this.secondname = secondname;
     this.lastname = lastname;
@@ -20,9 +17,6 @@ public class GroupContactData {
     this.companyname = companyname;
     this.city = city;
     this.email = email;
-    this.bday = bday;
-    this.bmonth = bmonth;
-    this.byear = byear;
   }
 
   public String getName() {
@@ -53,15 +47,4 @@ public class GroupContactData {
     return email;
   }
 
-  public String getBday() {
-    return bday;
-  }
-
-  public String getBmonth() {
-    return bmonth;
-  }
-
-  public String getByear() {
-    return byear;
-  }
 }
