@@ -34,7 +34,7 @@ public class ApplicationManager {
     }
     System.setProperty("webdriver.chrome.driver", "C:\\Users\\nstaroso\\GitHub\\java_pft\\addressbook-web-tests\\chromedriver.exe");
     wd = new ChromeDriver();
-    wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     js = (JavascriptExecutor) wd;
     wd.get("http://localhost/addressbook/addressbook/group.php");
     groupsHelper = new GroupsHelper(wd);
