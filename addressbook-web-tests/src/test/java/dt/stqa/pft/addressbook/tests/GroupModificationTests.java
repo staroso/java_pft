@@ -7,6 +7,9 @@ public class GroupModificationTests extends TestBase {
   @Test
   public void testGroupModification () {
     app.getNavigationHelper().gotoGroupPage();
+    if (! app.getGroupsHelper().isThereAGroup()) {
+      app.getGroupsHelper().createGroup(new GroupData("test4", "test4", "test4"));
+    }
     app.selectGroup();
     app.getGroupsHelper().initGroupModification();
     app.getGroupsHelper().fillGroupForm(new GroupData("test4", null, "test4"));
