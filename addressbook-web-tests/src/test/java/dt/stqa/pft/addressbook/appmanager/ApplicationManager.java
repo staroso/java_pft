@@ -68,9 +68,6 @@ public class ApplicationManager {
     }
   }
 
-  public void selectGroup() {
-    wd.findElement(By.name("selected[]")).click();
-  }
 
   public GroupsHelper getGroupsHelper() {
     return groupsHelper;
