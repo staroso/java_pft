@@ -2,9 +2,10 @@ package dt.stqa.pft.addressbook.tests;
 
 import dt.stqa.pft.addressbook.model.GroupData;
 import org.testng.annotations.Test;
+
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
+
 import static org.testng.Assert.assertEquals;
 public class TestGroupsCreation extends TestBase {
   @Test
@@ -19,9 +20,10 @@ public class TestGroupsCreation extends TestBase {
     List<GroupData> after = app.getGroupsHelper().getGroupList();
     assertEquals(after.size(), before.size() + 1);
     before.add(group);
-    group.setId(after.stream().max(Comparator.comparingInt(GroupData::getId)).get().getId());
-    before.add(group);
-    assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
+    Comparator<? super GroupData> byId = Comparator.comparingInt(GroupData::getId);
+    before.sort(byId);
+    after.sort(byId);
+    assertEquals(before, after);
     app.logout();
   }
 
