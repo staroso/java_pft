@@ -1,5 +1,7 @@
 package dt.stqa.pft.addressbook.model;
 
+import java.util.Objects;
+
 public class GroupData {
   private final String id;
   private final String name;
@@ -28,14 +30,6 @@ public class GroupData {
     return name;
   }
 
-  public String getHeader() {
-    return header;
-  }
-
-  public String getFooter() {
-    return footer;
-  }
-
   @Override
   public String toString() {
     return "GroupData{" +
@@ -51,8 +45,8 @@ public class GroupData {
 
     GroupData groupData = (GroupData) o;
 
-    if (id != null ? !id.equals(groupData.id) : groupData.id != null) return false;
-    return name != null ? name.equals(groupData.name) : groupData.name == null;
+    if (!Objects.equals(id, groupData.id)) return false;
+    return Objects.equals(name, groupData.name);
   }
 
   @Override
@@ -61,4 +55,13 @@ public class GroupData {
     result = 31 * result + (name != null ? name.hashCode() : 0);
     return result;
   }
+
+  public String getHeader() {
+    return header;
+  }
+
+  public String getFooter() {
+    return footer;
+  }
+
 }
