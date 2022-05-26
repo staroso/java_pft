@@ -20,8 +20,8 @@ public class TestAddContact extends TestBase {
   @Test
   public void testCreateNewContact() throws Exception {
     app.getNavigationHelper().goToHomePage();
-    List<ContactData> before = app.contact().list();
-    ContactData contact = new ContactData("Nadezhda", "Andreevna", "Chumakova", "nstaroso", "DTIT", "Saint-Petersburg", "n.starosotnikova@gmail.com", "test4");
+    List<ContactData> before = app.getContactHelper().getContactList();
+    ContactData contact = new ContactData("test_name", "test_lastname", "test4");
     if (! app.getGroupsHelper().isThereAGroup()) {
       app.getGroupsHelper().createGroup(new GroupData("test4", "test4", "test4"));
     }
@@ -29,7 +29,7 @@ public class TestAddContact extends TestBase {
     app.getContactHelper().fillDataOfContact(contact, true);
     app.getContactHelper().submitContactCreation();
     app.getContactHelper().returnToHomePage();
-    List<ContactData> after = app.contact().list();
+    List<ContactData> after = app.contact().getContactList();
     Assert.assertEquals(after.size(), before.size() + 1);
     before.add(contact);
     Comparator<? super ContactData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());

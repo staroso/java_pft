@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,10 +25,6 @@ public class ContactHelper extends HelperBase {
     type(By.name("firstname"), contactData.getName());
     type(By.name("middlename"), contactData.getSecondname());
     type(By.name("lastname"), contactData.getLastname());
-    type(By.name("nickname"), contactData.getNickname());
-    type(By.name("company"), contactData.getCompanyname());
-    type(By.name("home"), contactData.getCity());
-    type(By.name("email"), contactData.getEmail());
 
     if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
@@ -56,7 +51,7 @@ public class ContactHelper extends HelperBase {
 
   public void createContact(ContactData contact) {
     initContactCreation();
-    fillDataOfContact(new ContactData("Nadezhda", "Andreevna", "Chumakova", "nstaroso", "DTIT", "Saint-Petersburg", "n.starosotnikova@gmail.com", "test4"), true);
+    fillDataOfContact(new ContactData("name", "lastname", "test4"), true);
     submitContactCreation();
     returnToHomePage();
   }
@@ -67,14 +62,23 @@ public class ContactHelper extends HelperBase {
   public int getContactCount() {
     return wd.findElements(By.name("selected[]")).size();
   }
+  public void alertClose() {
+    wd.switchTo().alert().accept();
+  }
 
+  public void selectContact(int index) {
+    click(By.name("selected[]"));
+  }
 
-  public List<ContactData> list() {
-    List<ContactData> contacts = new ArrayList<>();
+  public List<ContactData> getContactList() {
+    List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
+      List<WebElement> column = element.findElements(By.cssSelector("td"));
+      String firstname = column.get(2).getText();
+      String lastname = column.get(1).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      ContactData contact = new ContactData(null,  null, null, null, null, null, null, null);
+      ContactData contact = new ContactData(id, firstname, lastname, null);
       contacts.add(contact);
     }
     return contacts;
