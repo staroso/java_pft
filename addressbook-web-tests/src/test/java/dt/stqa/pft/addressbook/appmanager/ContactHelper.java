@@ -42,8 +42,8 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
     wd.switchTo().alert().accept();
   }
-  public void initContactModification() {
-    click(By.xpath("/html/body/div/div[4]/form[2]/table/tbody/tr[2]/td[8]/a/img"));
+  public void initContactModification(int index) {
+    wd.findElements(By.cssSelector("img[alt='Edit']")).get(index).click();
   }
   public void submitContactModification() {
     click(By.xpath("//div[@id='content']/form/input[22]"));
@@ -61,9 +61,6 @@ public class ContactHelper extends HelperBase {
   }
   public int getContactCount() {
     return wd.findElements(By.name("selected[]")).size();
-  }
-  public void alertClose() {
-    wd.switchTo().alert().accept();
   }
 
   public void selectContact(int index) {
