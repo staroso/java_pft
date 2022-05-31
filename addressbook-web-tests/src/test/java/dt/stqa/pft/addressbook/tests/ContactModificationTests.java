@@ -1,6 +1,7 @@
 package dt.stqa.pft.addressbook.tests;
 
 import dt.stqa.pft.addressbook.model.ContactData;
+import dt.stqa.pft.addressbook.model.GroupData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -11,6 +12,9 @@ public class ContactModificationTests extends TestBase{
 
   @Test
   public void testModificationContact() {
+    if (! app.getGroupsHelper().isThereAGroup()) {
+      app.getGroupsHelper().createGroup(new GroupData("test4", "test4", "test4"));
+    }
     app.getNavigationHelper().goToHomePage();
     if (! app.getContactHelper().isThereAContact()) {
       app.getContactHelper().createContact(new ContactData( "name", "lastname", "test4"));
