@@ -10,14 +10,14 @@ import static org.testng.Assert.assertEquals;
 public class TestGroupsCreation extends TestBase {
   @Test
   public void testGroupCreation() {
-    app.getNavigationHelper().gotoGroupPage();
-    List<GroupData> before = app.getGroupsHelper().getGroupList();
-    GroupData group = new GroupData("test22", null, null);
-    app.getGroupsHelper().initGroupCreation();
-    app.getGroupsHelper().fillGroupForm(group);
-    app.getGroupsHelper().submitGroupCreation();
-    app.getGroupsHelper().returntoGroupPage();
-    List<GroupData> after = app.getGroupsHelper().getGroupList();
+    app.goTo().GroupPage();
+    List<GroupData> before = app.group().list();
+    GroupData group = new GroupData().withName("test2");
+    app.group().initGroupCreation();
+    app.group().fillGroupForm(group);
+    app.group().submitGroupCreation();
+    app.group().returntoGroupPage();
+    List<GroupData> after = app.group().list();
     assertEquals(after.size(), before.size() + 1);
     before.add(group);
     Comparator<? super GroupData> byId = Comparator.comparingInt(GroupData::getId);
