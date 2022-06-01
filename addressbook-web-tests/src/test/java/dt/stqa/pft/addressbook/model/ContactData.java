@@ -3,64 +3,69 @@ package dt.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
-  private int id;
-  private String name;
-  private String secondname;
+  private int id = Integer.MAX_VALUE;
+  private String firstname;
   private String lastname;
   private String group;
 
-  public ContactData(String name, String lastname, String group) {
-    this.id = Integer.MAX_VALUE;
-    this.name = name;
-    this.lastname = lastname;
-    this.group = group;
-  }
-  public ContactData(int id, String name, String lastname, String group) {
-    this.id = id;
-    this.name = name;
-    this.lastname = lastname;
-    this.group = group;
-  }
 
   public int getId() {
     return id;
   }
 
-  public String getName() {
-    return name;
+  public ContactData withId(int id) {
+    this.id = id;
+    return this;
   }
 
-  public String getSecondname() {
-    return secondname;
+  public ContactData withFirstname(String firstname) {
+    this.firstname = firstname;
+    return this;
   }
+
+  public ContactData withLastname(String lastname) {
+    this.lastname = lastname;
+    return this;
+  }
+
+  public ContactData withGroup(String group) {
+    this.group = group;
+    return this;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public String getFirstname() {
+    return firstname; }
 
   public String getLastname() {
-    return lastname;
-  }
-
+    return lastname; }
 
   public String getGroup() {
     return group;
   }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     ContactData that = (ContactData) o;
-    return Objects.equals(name, that.name) &&
-            Objects.equals(lastname, that.lastname);
+    return id == that.id &&
+            Objects.equals(firstname, that.firstname);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, lastname);
+    return Objects.hash(id, firstname);
   }
 
   @Override
   public String toString() {
     return "ContactData{" +
-            "name='" + name + '\'' +
-            "lastname='" + lastname + '\'' +
+            "id=" + id +
+            ", firstname='" + firstname + '\'' +
             '}';
   }
 
