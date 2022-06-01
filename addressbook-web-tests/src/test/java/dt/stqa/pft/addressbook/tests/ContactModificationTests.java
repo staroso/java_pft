@@ -18,8 +18,9 @@ public class ContactModificationTests extends TestBase{
     }
     app.goTo().goToHomePage();
     if (app.contact().all().size() ==0) {
-      app.contact().createContact(new ContactData().withFirstname("test_name").withLastname("test_surname").withGroup("test4"), true);
-    }
+      app.contact().createContact(new ContactData().withFirstname("test_name").withLastname("test_surname").withGroup("test1")
+              .withHomePhone("12 345").withMobilePhone("22-222").withWorkPhone("+33553").withAddress("wwwLeningrad")
+              .withEmail("qwerty@mail.ru").withEmail2("trewq @mail.ru").withEmail3("zxdfgdfcvbn@mail.ru"), true);    }
     }
   @Test(enabled = true)
   public void testModificationContact() {
@@ -30,7 +31,6 @@ public class ContactModificationTests extends TestBase{
     app.contact().modify(contact);
     Contacts after = app.contact().all();
     assertThat(after.size(), equalTo(before.size()));
-
     assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
   }
   }

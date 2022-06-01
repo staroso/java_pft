@@ -17,6 +17,7 @@ public class TestAddContact extends TestBase {
   private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
   private JavascriptExecutor js;
+
   @BeforeMethod
   public void ensurePreconditions() {
     app.goTo().GroupPage();
