@@ -10,10 +10,11 @@ import java.util.List;
 public class ContactDeletionTests extends TestBase {
   private int id;
 
-  @Test(enabled = false)
+  @Test(enabled = true)
   public void testDeleteContact() {
-    if (! app.group().isThereAGroup()) {
-      app.group().create(new GroupData().withName("test22"));
+    app.goTo().GroupPage();
+    if (app.group().all().size() ==0) {
+      app.group().create(new GroupData().withName("test4"));
     }
     app.goTo().goToHomePage();
     if (! app.getContactHelper().isThereAContact()) {

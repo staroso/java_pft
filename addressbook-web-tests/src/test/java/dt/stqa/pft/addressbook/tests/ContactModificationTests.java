@@ -12,16 +12,16 @@ public class ContactModificationTests extends TestBase{
 
   @Test(enabled = true)
   public void testModificationContact() {
-    if (! app.group().isThereAGroup()) {
-      GroupData group = new GroupData().withName("test4");
-      app.group().create(group);
+    app.goTo().GroupPage();
+    if (app.group().all().size() ==0) {
+      app.group().create(new GroupData().withName("test4"));
     }
     app.goTo().goToHomePage();
     if (! app.getContactHelper().isThereAContact()) {
       app.getContactHelper().createContact(new ContactData( "name", "lastname", "test4"));
     }
     List<ContactData> before = app.getContactHelper().getContactList();
-    app.getContactHelper().initContactModification(before.size() - 1);;
+    app.getContactHelper().initContactModification(before.size() - 1);
     ContactData contact = new ContactData(before.get(before.size() - 1).getId(), "name", "lastname", "test4");
     app.getContactHelper().fillDataOfContact(contact, false);
     app.getContactHelper().submitContactModification();

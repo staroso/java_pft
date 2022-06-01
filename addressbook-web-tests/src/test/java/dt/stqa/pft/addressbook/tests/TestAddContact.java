@@ -17,13 +17,14 @@ public class TestAddContact extends TestBase {
   private StringBuffer verificationErrors = new StringBuffer();
   private JavascriptExecutor js;
 
-  @Test(enabled = false)
+  @Test(enabled = true)
   public void testCreateNewContact() throws Exception {
     app.goTo().goToHomePage();
     List<ContactData> before = app.getContactHelper().getContactList();
     ContactData contact = new ContactData("test_name", "test_lastname", "test4");
-    if (! app.group().isThereAGroup()) {
-      GroupData group = new GroupData().withName("test22");
+    app.goTo().GroupPage();
+    if (app.group().all().size() ==0) {
+      app.group().create(new GroupData().withName("test4"));
     }
     app.getContactHelper().initContactCreation();
     app.getContactHelper().fillDataOfContact(contact, true);

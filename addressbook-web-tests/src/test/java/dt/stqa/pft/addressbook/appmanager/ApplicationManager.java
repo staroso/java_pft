@@ -34,7 +34,7 @@ public class ApplicationManager {
     }
     wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     js = (JavascriptExecutor) wd;
-    wd.get("http://localhost/addressbook/addressbook/group.php");
+    wd.get("http://localhost/addressbook/group.php");
     groupsHelper = new GroupsHelper(wd);
     navigationHelper = new NavigationHelper(wd);
     sessionHelper = new SessionHelper(wd);
