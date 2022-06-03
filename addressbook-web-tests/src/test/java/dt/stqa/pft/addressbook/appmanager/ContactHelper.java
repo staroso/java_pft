@@ -26,7 +26,6 @@ public class ContactHelper extends HelperBase {
   public void fillDataOfContact(ContactData contactData, boolean creation) {
     type(By.name("firstname"), contactData.getFirstname());
     type(By.name("lastname"), contactData.getLastname());
-
     if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
     }   else {
@@ -36,9 +35,12 @@ public class ContactHelper extends HelperBase {
     type(By.name("home"), contactData.getHomePhone());
     type(By.name("mobile"), contactData.getMobilePhone());
     type(By.name("work"), contactData.getWorkPhone());
+    type(By.name("phone2"), contactData.getPhone2());
     type(By.name("email"), contactData.getEmail());
     type(By.name("email2"), contactData.getEmail2());
     type(By.name("email3"), contactData.getEmail3());
+    attach(By.name("photo"), contactData.getPhoto());
+
   }
   public void initContactCreation() {
     click(By.linkText("add new"));
@@ -70,9 +72,9 @@ public class ContactHelper extends HelperBase {
       wd.switchTo().alert().accept();
     } catch (NoAlertPresentException e) {}
   }
-  public void createContact(ContactData contact, boolean creation) {
+  public void createContact(ContactData contact, boolean typ) {
     initContactCreation();
-    fillDataOfContact(contact, true);
+    fillDataOfContact(contact, typ);
     submitContactCreation();
     returnToHomePage();
   }

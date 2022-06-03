@@ -70,6 +70,14 @@ public class GroupsHelper extends HelperBase {
     returntoGroupPage();
   }
 
+  public boolean check(GroupData data) {
+    new NavigationHelper(wd).GroupPage();
+    if (all().size() == 0) {
+      create(data);
+      return true;
+    }
+    return false;
+  }
   public void selectGroupById(int id) {
     wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
   }

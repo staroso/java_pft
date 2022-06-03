@@ -14,14 +14,14 @@ public class ContactModificationTests extends TestBase{
   public void ensurePreconditions() {
     app.goTo().GroupPage();
     if (app.group().all().size() ==0) {
-      app.group().create(new GroupData().withName("test1"));
+      app.group().check(new GroupData().withName("test1"));
     }
     app.goTo().goToHomePage();
     if (app.contact().all().size() ==0) {
       app.contact().createContact(new ContactData().withFirstname("test_name").withLastname("test_surname").withGroup("test1")
               .withHomePhone("12 345").withMobilePhone("22-222").withWorkPhone("+33553").withAddress("wwwLeningrad")
-              .withEmail("qwerty@mail.ru").withEmail2("trewq @mail.ru").withEmail3("zxdfgdfcvbn@mail.ru"), true);    }
-    }
+              .withEmail("qwerty@mail.ru").withEmail2("trewq@mail.ru").withEmail3("zxdfgdfcvbn@mail.ru"), true);    }
+  }
   @Test(enabled = true)
   public void testModificationContact() {
     Contacts before = app.contact().all();
