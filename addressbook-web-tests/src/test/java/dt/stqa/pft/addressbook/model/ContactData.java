@@ -18,7 +18,7 @@ public class ContactData {
   private String allEmails;
   private String address;
   private File photo;
-  private String phone2;
+  private String faxPhone;
 
 
   public File getPhoto() {
@@ -97,8 +97,8 @@ public class ContactData {
     this.workPhone = workPhone;
     return this;
   }
-  public ContactData withPhone2(String phone2) {
-    this.phone2 = phone2;
+  public ContactData withFaxPhone(String fax) {
+    this.faxPhone = fax;
     return this;
   }
 
@@ -107,7 +107,7 @@ public class ContactData {
   public String getMobilePhone() { return mobilePhone; }
 
   public String getWorkPhone() { return workPhone; }
-  public String getPhone2() { return phone2; }
+  public String getFaxPhone() { return faxPhone; }
   public int getId() {
     return id;
   }
