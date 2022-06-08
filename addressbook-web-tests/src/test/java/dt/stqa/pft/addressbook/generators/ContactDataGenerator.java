@@ -82,7 +82,6 @@ public class ContactDataGenerator {
       contacts.add(new ContactData()
               .withFirstname(String .format("test_name %s", i))
               .withLastname(String .format("test_surname %s", i))
-              .withGroup(String .format("[]", i))
               .withHomePhone(String .format("12345 %s", i))
               .withMobilePhone(String .format("12345 %s", i))
               .withWorkPhone(String .format("123456 %s", i))
