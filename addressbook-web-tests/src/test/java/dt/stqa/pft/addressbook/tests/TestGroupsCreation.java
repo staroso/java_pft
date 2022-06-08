@@ -19,7 +19,7 @@ public class TestGroupsCreation extends TestBase {
   @DataProvider
   public Iterator<Object[]> validGroups() throws IOException {
     List<Object[]> list = new ArrayList<Object[]>();
-    BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/group.csv"));
+    try (BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/group.csv"))) {
     String line = reader.readLine();
     while (line != null) {
       String[] split = line.split(";");
@@ -28,7 +28,7 @@ public class TestGroupsCreation extends TestBase {
     }
     return list.iterator();
   }
-
+  }
   @Test(dataProvider = "validGroups")
   public void testGroupCreation(GroupData group) throws Exception {
 
