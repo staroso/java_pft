@@ -58,6 +58,7 @@ public class ContactData {
   @Transient
   private String address;
   @Expose
+  @Transient
   @Column(name="photo")
   @Type(type = "text")
   private String photo;
@@ -66,9 +67,9 @@ public class ContactData {
   private String phone2;
 
 
-  public File getPhoto() {
-    return new File (photo);
-  }
+ // public File getPhoto() {
+ //   return new File (photo);
+  //}
 
   public ContactData withPhoto(File photo) {
     this.photo = photo.getPath();
@@ -188,10 +189,6 @@ public class ContactData {
   public String getLastname() {
     return lastname; }
 
-  public String getGroup() {
-    return group;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -211,7 +208,7 @@ public class ContactData {
     return "ContactData{" +
             "id=" + id +
             ", firstname='" + firstname + '\'' +
+            ", lastname='" + lastname + '\'' +
             '}';
   }
-
 }
