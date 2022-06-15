@@ -2,10 +2,13 @@ package dt.stqa.pft.addressbook.appmanager;
 
 import dt.stqa.pft.addressbook.model.ContactData;
 import dt.stqa.pft.addressbook.model.Contacts;
+import dt.stqa.pft.addressbook.model.GroupData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 import java.util.List;
 
@@ -24,11 +27,15 @@ public class ContactHelper extends HelperBase {
   public void fillDataOfContact(ContactData contactData, boolean creation) {
     type(By.name("firstname"), contactData.getFirstname());
     type(By.name("lastname"), contactData.getLastname());
-   // if (creation) {
-   //   new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-  //  }   else {
-   //   Assert.assertFalse(isElementPresent(By.name("new_group")));
-   // }
+    if (creation) {
+      if (contactData.getGroups().size() > 0) {
+        Assert.assertTrue(contactData.getGroups().size() == 1);
+        new Select(wd.findElement(By.name("new_group")))
+                .selectByVisibleText(contactData.getGroups().iterator().next().getName());
+      }
+    } else {
+      Assert.assertFalse(isElementPresent(By.name("new_group")));
+    }
     type(By.name("address"), contactData.getAddress());
     type(By.name("home"), contactData.getHomePhone());
     type(By.name("mobile"), contactData.getMobilePhone());
@@ -40,6 +47,28 @@ public class ContactHelper extends HelperBase {
 //    attach(By.name("photo"), contactData.getPhoto());
 
   }
+
+  public void deleteContactFromGroup(ContactData contact, GroupData group) {
+    selectAllGroup(group.getName());
+    selectContactById(contact.getId());
+    deleteFromGroup(group.getName());
+  }
+  public void selectContactById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+  }
+  private void deleteFromGroup(String name) {
+    click(By.name("remove"));
+  }
+
+  public void addContactToGroup(ContactData contact, GroupData group) {
+    selectContactById(contact.getId());
+    new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(group.getName());
+    click(By.name("add"));
+  }
+  public void selectAllGroup(String name) {
+    new Select(wd.findElement(By.name("group"))).selectByVisibleText(name);
+  }
+
   public void initContactCreation() {
     click(By.linkText("add new"));
   }

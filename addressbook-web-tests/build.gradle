@@ -15,7 +15,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.9.0'
     implementation 'mysql:mysql-connector-java:8.0.29'
     implementation 'org.hibernate:hibernate-core:5.6.8.Final'
-   // implementation 'ch.qos.logback:logback-classic:1.3.0-alpha14'
+    implementation 'ch.qos.logback:logback-classic:1.2.11'
 }
     test {
 // useJUnitPlatform()
@@ -34,6 +34,9 @@ task testGroups(type: Test) {
     if (project.hasProperty('target')) {
         systemProperty 'target',"${target}"
     }
+    if (project.hasProperty('verifyUI')) {
+        systemProperty 'verifyUI', "${verifyUI}"
+    }
 }
 
 task testContacts(type: Test) {
@@ -47,5 +50,9 @@ task testContacts(type: Test) {
 
     if (project.hasProperty('target')) {
         systemProperty 'target', "${target}"
+    }
+
+    if (project.hasProperty('verifyUI')) {
+        systemProperty 'verifyUI', "${verifyUI}"
     }
 }

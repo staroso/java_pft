@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import dt.stqa.pft.addressbook.model.ContactData;
 import dt.stqa.pft.addressbook.model.Contacts;
+import dt.stqa.pft.addressbook.model.Groups;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.DataProvider;
@@ -44,6 +45,8 @@ public class TestAddContact extends TestBase {
 
   @Test (dataProvider = "validContactsFromJson")
   public void testCreateNewContact(ContactData contact) throws Exception {
+    Groups groups = app.db().groups();
+    contact.inGroup(groups.iterator().next());
     app.goTo().goToHomePage();
     Contacts before = app.db().contacts();
     app.contact().createContact(contact);
@@ -52,5 +55,6 @@ public class TestAddContact extends TestBase {
 
     assertThat(after, equalTo(
             before.withAdded(contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
+
   }
 }
