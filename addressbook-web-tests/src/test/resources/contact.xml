@@ -1,0 +1,27 @@
+<list>
+  <contact>
+    <firstname>test_name 0</firstname>
+    <lastname>test_surname
+0</lastname>
+  </contact>
+  <contact>
+    <firstname>test_name 1</firstname>
+    <lastname>test_surname
+1</lastname>
+  </contact>
+  <contact>
+    <firstname>test_name 2</firstname>
+    <lastname>test_surname
+2</lastname>
+  </contact>
+  <contact>
+    <firstname>test_name 3</firstname>
+    <lastname>test_surname
+3</lastname>
+  </contact>
+  <contact>
+    <firstname>test_name 4</firstname>
+    <lastname>test_surname
+4</lastname>
+  </contact>
+</list>

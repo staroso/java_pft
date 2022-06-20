@@ -1,0 +1,27 @@
+<list>
+  <Group>
+    <footer>footer0</footer>
+    <id>2147483647</id>
+    <name>name0</name>
+  </Group>
+  <Group>
+    <footer>footer1</footer>
+    <id>2147483647</id>
+    <name>name1</name>
+  </Group>
+  <Group>
+    <footer>footer2</footer>
+    <id>2147483647</id>
+    <name>name2</name>
+  </Group>
+  <Group>
+    <footer>footer3</footer>
+    <id>2147483647</id>
+    <name>name3</name>
+  </Group>
+  <Group>
+    <footer>footer4</footer>
+    <id>2147483647</id>
+    <name>name4</name>
+  </Group>
+</list>
